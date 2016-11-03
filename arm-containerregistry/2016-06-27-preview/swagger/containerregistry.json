@@ -20,7 +20,8 @@
         "tags": [
           "Operation"
         ],
-        "description": "Checks whether the container registry name is available.",
+        "summary": "Checks whether the specified container registry name is available.",
+        "description": "Checks whether the specified container registry name is valid and is not already in use.",
         "operationId": "Registries_CheckNameAvailability",
         "parameters": [
           {
@@ -54,7 +55,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Gets the properties for the specified container registry.",
+        "summary": "Gets the properties for the specified container registry.",
+        "description": "Gets the properties for the specified container registry in the specified subscription and resource group.",
         "operationId": "Registries_GetProperties",
         "parameters": [
           {
@@ -91,7 +93,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Creates or updates a container registry with the specified parameters. The storage account provided in this operation should be in the same location as the container registry.",
+        "summary": "Creates or updates a container registry with the specified properties.",
+        "description": "Creates or updates a container registry in the specified subscription and resource group with the specified properties. The storage account that you provide in this operation should be in the same location as the container registry.",
         "operationId": "Registries_CreateOrUpdate",
         "parameters": [
           {
@@ -137,7 +140,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Deletes a container registry from the given subscription and resource group.",
+        "summary": "Deletes the specified container registry.",
+        "description": "Deletes the specified container registry from the specified subscription and resource group.",
         "operationId": "Registries_Delete",
         "parameters": [
           {
@@ -171,7 +175,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Updates a container registry with the specified parameters. The storage account provided in this operation should be in the same location as the container registry.",
+        "summary": "Updates the specified container registry with the specified parameters.",
+        "description": "Updates the specified container registry with the specified parameters, in the specified subscription and resource group. The storage account that you provide in this operation should be in the same location as the container registry.",
         "operationId": "Registries_Update",
         "parameters": [
           {
@@ -219,7 +224,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Lists all the container registries available under the given resource group.",
+        "summary": "Lists the container registries in the specified resource group.",
+        "description": "Lists the container registries in the specified subscription and resource group.",
         "operationId": "Registries_ListByResourceGroup",
         "parameters": [
           {
@@ -254,7 +260,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Lists all the container registries available under the subscription.",
+        "summary": "Lists the container registries in the specified subscription.",
+        "description": "Lists the container registries in the specified subscription.",
         "operationId": "Registries_List",
         "parameters": [
           {
@@ -282,7 +289,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Gets login credentials for the specified container registry.",
+        "summary": "Gets the admin user credentials for the specified container registry.",
+        "description": "Gets the admin username and password for the specified container registry in the specified subsciption and resource group.",
         "operationId": "Registries_GetCredentials",
         "parameters": [
           {
@@ -321,7 +329,8 @@
         "tags": [
           "Registries"
         ],
-        "description": "Regenerates login credentials for the specified container registry.",
+        "summary": "Regenerates the admin user credentials for the specified container registry.",
+        "description": "Regenerates the admin username and password for the specified container registry in the specified subsciption and resource group.",
         "operationId": "Registries_RegenerateCredentials",
         "parameters": [
           {
@@ -365,7 +374,7 @@
       ],
       "properties": {
         "name": {
-          "description": "The container registry name.",
+          "description": "The container registry name. The container registry name can contain only letters and numbers.",
           "type": "string"
         },
         "type": {
@@ -385,7 +394,7 @@
       "description": "The result of checking name availability.",
       "properties": {
         "nameAvailable": {
-          "description": "The boolean value that indicates whether the name is available.",
+          "description": "Whether the container registry name is available.",
           "type": "boolean"
         },
         "reason": {
@@ -431,29 +440,29 @@
           "readOnly": true
         },
         "adminUserEnabled": {
-          "description": "The boolean value that indicates whether admin user is enabled. Default value is false.",
+          "description": "Whether the admin user account is enabled in the container registry. The default value is false.",
           "default": false,
           "type": "boolean"
         },
         "storageAccount": {
           "$ref": "#/definitions/StorageAccountProperties",
-          "description": "The storage account properties."
+          "description": "The properties of the storage account for the container registry."
         }
       }
     },
     "StorageAccountProperties": {
-      "description": "The storage account properties.",
+      "description": "The properties of the storage account for the container registry.",
       "required": [
         "name",
         "accessKey"
       ],
       "properties": {
         "name": {
-          "description": "Storage account name.",
+          "description": "The storage account name.",
           "type": "string"
         },
         "accessKey": {
-          "description": "Storage account access key.",
+          "description": "The storage account access key.",
           "type": "string"
         }
       }
@@ -479,12 +488,12 @@
       "description": "The parameters for updating container registry properties.",
       "properties": {
         "adminUserEnabled": {
-          "description": "The boolean value that indicates whether admin user is enabled. Default value is false.",
+          "description": "Whether the admin user account for the container registry is enabled. The default value is false.",
           "type": "boolean"
         },
         "storageAccount": {
           "$ref": "#/definitions/StorageAccountProperties",
-          "description": "The storage account properties."
+          "description": "The properties of the storage account for the container registry."
         }
       }
     },
@@ -499,7 +508,7 @@
           }
         },
         "nextLink": {
-          "description": "The uri to fetch the next set of container registries.",
+          "description": "The URI to fetch the next set of container registries.",
           "type": "string"
         }
       }
@@ -508,11 +517,11 @@
       "description": "The result of showing admin user credentials.",
       "properties": {
         "username": {
-          "description": "Admin username.",
+          "description": "The admin username.",
           "type": "string"
         },
         "password": {
-          "description": "Admin password.",
+          "description": "The admin password.",
           "type": "string"
         }
       }
@@ -524,7 +533,7 @@
       ],
       "properties": {
         "id": {
-          "description": "Resource Id.",
+          "description": "Resource ID.",
           "type": "string",
           "readOnly": true
         },
@@ -539,7 +548,7 @@
           "readOnly": true
         },
         "location": {
-          "description": "Resource location. Once the resource has been created, location cannot be updated.",
+          "description": "Resource location. After the resource has been created, the location cannot be updated.",
           "type": "string"
         },
         "tags": {
@@ -557,14 +566,14 @@
     "SubscriptionIdParameter": {
       "name": "subscriptionId",
       "in": "path",
-      "description": "Microsoft Azure subscription id.",
+      "description": "The Microsoft Azure subscription ID.",
       "required": true,
       "type": "string"
     },
     "ApiVersionParameter": {
       "name": "api-version",
       "in": "query",
-      "description": "Client Api Version.",
+      "description": "The client API version.",
       "required": true,
       "type": "string"
     }
